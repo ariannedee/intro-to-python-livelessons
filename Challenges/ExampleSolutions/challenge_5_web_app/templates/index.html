@@ -1,0 +1,15 @@
+<html>
+<head>
+  <title>How many clicks?</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="content">
+    <h1>I've been clicked <span id="num-clicks">{{ num_clicks }}</span> times</h1>
+    <a href="click" id="click"><img src="{{ url_for('static', filename='cat.png') }}"></a>
+    <p>Click me</p>
+  </div>
+</body>
+</html>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
