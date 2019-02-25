@@ -1,5 +1,6 @@
 """
-
+Ask the user to supply the words to the story in {}'s.
+Tell them the story with the words they gave inserted in.
 """
 
 # Write a story with some words missing
