@@ -40,15 +40,24 @@ hard_words = ['Awkward', 'Bagpipes', 'Banjo', 'Bungler', 'Croquet', 'Crypt',
               'Yacht', 'Zealous', 'Zigzag', 'Zippy', 'Zombie']
 
 """
-Word guessing game
-------------------
-Choose a word for the user to guess.
-The user can have 6 wrong guesses before they lose the game.
-After each guess, display the correct guesses, the wrong guesses,
-and the number of wrong guesses left.
-If the user doesn't win, tell them the answer.
+Refactored word guessing game
+Extract get_display_word() and user_did_win() from the word_game() function.
+Use list comprehensions to simplify get_display_word().
+Tests for these functions are in challenge_3b_word_guess_tests.py
 """
 import random
+
+
+def get_display_word(answer, guessed_letters):
+    letter_list = [letter if letter in guessed_letters else '_' for letter in answer]
+    return ' '.join(letter_list)
+
+
+def user_did_win(answer, guessed_letters):
+    for letter in answer:
+        if letter not in guessed_letters:
+            return False
+    return True
 
 
 def word_game():
@@ -57,14 +66,7 @@ def word_game():
     guessed_letters = []
 
     while num_wrong_guesses_left > 0:
-        display_word = ""
-        for letter in answer:
-            if letter in guessed_letters:
-                display_word += letter
-            else:
-                display_word += '_'
-            display_word += ' '
-        print(display_word.strip())
+        print(get_display_word(answer, guessed_letters))
         print(f'{num_wrong_guesses_left} wrong guesses left')
         print(f'Guesses: {guessed_letters}')
 
@@ -77,16 +79,12 @@ def word_game():
             print("Nope :(")
             num_wrong_guesses_left -= 1
 
-        won = True
-        for letter in answer:
-            if letter not in guessed_letters:
-                won = False
-                break
-        if won:
+        if user_did_win(answer, guessed_letters):
             print("You win!")
             return
     print("Sorry, you lose")
     print(f"The answer was {answer}")
 
 
-word_game()
+if __name__ == "__main__":
+    word_game()
