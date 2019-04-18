@@ -10,7 +10,7 @@ import random
 
 
 def run_game():
-    number = random.randint(1, 21)
+    number = random.randint(1, 20)
     max_guesses = 3
     current_guess = 0
 
