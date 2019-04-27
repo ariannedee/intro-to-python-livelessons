@@ -2,7 +2,7 @@
 Tests some of the functions in word_guessing_game
 Look into unittest, pytest, and mock libraries for more advanced tests
 """
-from challenge_3b_word_guess_refactored import (
+from Challenges.ExampleSolutions.challenge_3b_word_guess_refactored import (
     get_display_word,
     user_did_win
 )

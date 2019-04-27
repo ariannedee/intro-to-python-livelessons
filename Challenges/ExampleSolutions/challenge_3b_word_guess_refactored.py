@@ -60,8 +60,17 @@ def user_did_win(answer, guessed_letters):
     return True
 
 
+def get_guess():
+    while True:
+        guess = input("Guess a letter: ").strip()
+        if len(guess) == 1 and guess.isalpha():
+            return guess.lower()
+        else:
+            print('Your guess should be a single letter')
+
+
 def word_game():
-    answer = random.choice(words)
+    answer = random.choice(words).lower()
     num_wrong_guesses_left = 6
     guessed_letters = []
 
@@ -70,7 +79,7 @@ def word_game():
         print(f'{num_wrong_guesses_left} wrong guesses left')
         print(f'Guesses: {guessed_letters}')
 
-        guess = input("Guess a letter: ")
+        guess = get_guess()
         guessed_letters.append(guess)
 
         if guess in answer:
