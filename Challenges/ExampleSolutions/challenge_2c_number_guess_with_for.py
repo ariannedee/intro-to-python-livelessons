@@ -15,7 +15,7 @@ def run_game():
 
     num_guesses = 3
     for num_guess in range(num_guesses):
-        print(f'You have {num_guesses} guesses left')
+        print(f'You have {num_guesses - num_guess} guesses left')
         guess = int(input("Make a guess: "))
 
         if guess == answer:
